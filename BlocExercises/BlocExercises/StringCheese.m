@@ -11,44 +11,59 @@
 @implementation StringCheese
 
 - (NSString *) favoriteCheeseStringWithCheese:(NSString *)cheeseName {
-    /* WORK HERE */
     return [NSString stringWithFormat:@"My favorite cheese is %@.", cheeseName];
- 
 }
 
+/**
+ cheeseName = @"monterey cheese"
+ cheeseName = @"fruit"
+ cheeseName = @"123"
+ */
+
+/**
+ *  Obj-C Method Declarations
+ *
+ *  Who is going to perform the action?: Class (+) or an Instance (-)
+ *  What does it return?: An object, nothing, a struct
+ *  What is it named?: For each word in the name, we can add a parameter (things the function can use)
+ *
+ */
 - (NSString *) cheeseNameWithoutCheeseSuffix:(NSString *)cheeseName {
-    if ([[cheeseName lowercaseString] hasSuffix:@" cheese"]) {
-        /* WORK HERE, ASSUMING `cheeseName` ENDS WITH " cheese" */
+    
+    /**
+     *  Obj-C Methods
+     *
+     *  The cat killed the mouse.
+     *
+     *  Subject: The cat
+     *  Verb: killed
+     *  IndirectObjecT: Mouse
+     *  Punctuation: .
+     *
+     *
+     *  [who? what?];
+     *  [cheeseName lowercaseString]
+     *
+     *  [who? what?: to whom?]
+     *  [cheeseName rangeOfString:@" cheese" options:NScaseInsensitiveSearch]
+     */
+    NSString *lowerCaseStringCheese = [cheeseName lowercaseString];
+    if ([lowerCaseStringCheese hasSuffix:@" cheese"]) {
         NSRange cheeseRange = [cheeseName rangeOfString:@" cheese" options:NSCaseInsensitiveSearch];
         return [cheeseName stringByReplacingCharactersInRange:cheeseRange withString:@""];
-        
     } else {
-        /* WORK HERE, ASSUMING `cheeseName` DOES NOT END WITH " cheese" */
         return cheeseName;
     }
-
-    /*
-     (You will learn more about if/else statements in a later checkpoint.)
-     */
-
+    
     return nil;
 }
 
 - (NSString *) numberOfCheesesStringWithCheeseCount:(NSUInteger)cheeseCount {
     if (cheeseCount == 1) {
-        /* WORK HERE, ASSUMING THERE IS 1 CHEESE */
-        return [NSString stringWithFormat:@"%ld cheese", cheeseCount];
-        
-        
+        return [NSString stringWithFormat:@"%ld cheese", (unsigned long)cheeseCount];
     } else {
-        /* WORK HERE, ASSUMING THERE ARE 2+ CHEESES */
-      
-        return [NSString stringWithFormat:@"%ld cheeses", cheeseCount];
+        return [NSString stringWithFormat:@"%ld cheeses", (unsigned long)cheeseCount];
     }
-    
-    /*
-     (You will learn more about if/else statements in a later checkpoint.)
-     */
     
     return nil;
 }
